@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: sub_tech_challenge_seller_api_fase4
+  data:
+    mongodb:
+      uri: mongodb://host:27017/seller_vehicle
+      username: root
+      password: root

@@ -3,9 +3,8 @@ spring:
     name: sub_tech_challenge_seller_api_fase4
   data:
     mongodb:
-      uri: mongodb://host:27017/seller_vehicle
-      username: root
-      password: root
+      uri: mongodb://posfiap:posfiap2@localhost:27017
+      database: vehicle
 
 vehicle:
   url: "http://localhost:8080/api/vehicle"

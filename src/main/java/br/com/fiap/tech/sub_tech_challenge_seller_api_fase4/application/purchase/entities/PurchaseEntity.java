@@ -1,10 +1,11 @@
 package br.com.fiap.tech.sub_tech_challenge_seller_api_fase4.application.purchase.entities;
 
-import jakarta.persistence.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;

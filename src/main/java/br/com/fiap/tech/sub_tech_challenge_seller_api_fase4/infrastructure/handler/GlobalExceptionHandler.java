@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
         HttpStatus status;
 
         switch (exception.getMessage()) {
-            case "Veiculo nao encontrado.":
+            case "compra nao encontrada":
                 status = HttpStatus.NOT_FOUND;
                 break;
             default:

@@ -6,3 +6,6 @@ spring:
       uri: mongodb://host:27017/seller_vehicle
       username: root
       password: root
+
+vehicle:
+  url: "http://localhost:8080/api/vehicle"

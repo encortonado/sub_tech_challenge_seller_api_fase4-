@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.fiap.tech</groupId>
     <artifactId>sub_tech_challenge_seller_api_fase4</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>sub_tech_challenge_seller_api_fase4</name>
     <description>sub_tech_challenge_seller_api_fase4</description>
     <url/>

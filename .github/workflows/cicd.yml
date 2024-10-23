@@ -1,0 +1,38 @@
+name: CICD
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Run Unit Tests
+        run: mvn clean test
+      - name: Build Project
+        run: mvn clean install -DskipTests
+      - name: Login to Docker Hub
+        run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+      - name: Build Docker Image
+        run: docker build -t encortondo/sub_tech_challenge_seller_api .
+      - name: Publish image on Docker Hub
+        run: docker push encortondo/sub_tech_challenge_seller_api:latest
+
+  deploy:
+    needs: build
+    runs-on: [aws-ec2]
+    steps:
+      - name: Pull Image from Docker Hub
+        run: docker pull encortondo/sub_tech_challenge_seller_api:latest
+      - name: Delete old container
+        run: docker rm -f sub_tech_challenge_seller_api_container
+      - name: Run Docker Container
+        run: docker run -d -p 8080:8080 --name sub_tech_challenge_seller_api_container encortondo/sub_tech_challenge_seller_api

@@ -7,6 +7,7 @@ import br.com.fiap.tech.sub_tech_challenge_seller_api_fase4.application.purchase
 import br.com.fiap.tech.sub_tech_challenge_seller_api_fase4.application.purchase.ports.IVehiclePurshaceService;
 import br.com.fiap.tech.sub_tech_challenge_seller_api_fase4.infrastructure.exceptions.CustomErrorTypeException;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -39,7 +40,7 @@ public class VehiclePurchaseService implements IVehiclePurshaceService {
 
         try {
             RestTemplate restTemplate = new RestTemplate();
-            String vehicleURL = vehicleAPI + vehicleId;
+            String vehicleURL = vehicleAPI + '/' + vehicleId;
 
             URI uri = new URI(vehicleURL);
 
@@ -81,7 +82,7 @@ public class VehiclePurchaseService implements IVehiclePurshaceService {
                 .cpf(purchaseDTO.getCpf())
                 .purchaseDate(new Date())
                 .vehicleId(purchaseDTO.getVehicleId())
-                .vehiclePrice(vehicle.getId())
+                .vehiclePrice(vehicle.getPrice())
                 .build();
 
         return vehiclePurchaseRepository.save(purchase);

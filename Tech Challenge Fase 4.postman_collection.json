@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "ddcaee08-060c-42dd-8039-cb71eb34b475",
+		"name": "Tech Challenge Fase 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28339999"
+	},
+	"item": [
+		{
+			"name": "Management",
+			"item": [
+				{
+					"name": "Cadastrar Veiculo",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"brand\": \"Fiat\",\n  \"model\": \"Uno\",\n  \"color\": \"green\",\n  \"year\": 2009,\n  \"price\": 80000.00\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vehicle_api}}/api/vehicle",
+							"host": [
+								"{{vehicle_api}}"
+							],
+							"path": [
+								"api",
+								"vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Cadastro do Veiculo",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 4,\n    \"brand\": \"Fiat\",\n    \"model\": \"Uno\",\n    \"color\": \"pink\",\n    \"year\": 2000,\n    \"price\": 87000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vehicle_api}}/api/vehicle",
+							"host": [
+								"{{vehicle_api}}"
+							],
+							"path": [
+								"api",
+								"vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca todos os Veïculos Cadastrados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{vehicle_api}}/api/vehicle",
+							"host": [
+								"{{vehicle_api}}"
+							],
+							"path": [
+								"api",
+								"vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar um veiculo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{vehicle_api}}/api/vehicle/6",
+							"host": [
+								"{{vehicle_api}}"
+							],
+							"path": [
+								"api",
+								"vehicle",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Comprar Veiculo",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cpf\": 38820398627,\n    \"vehicleId\": 4\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{seller_api}}/api/purchase",
+							"host": [
+								"{{seller_api}}"
+							],
+							"path": [
+								"api",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca todos os Veïculos Vendidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{seller_api}}/api/purchase",
+							"host": [
+								"{{seller_api}}"
+							],
+							"path": [
+								"api",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Webhook] Atualiza Status Pagamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{seller_api}}/api/purchase/6719837cca7b2d4fc1aca0dd",
+							"host": [
+								"{{seller_api}}"
+							],
+							"path": [
+								"api",
+								"purchase",
+								"6719837cca7b2d4fc1aca0dd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "vehicle_api",
+			"value": "http://3.235.30.1:8080",
+			"type": "string"
+		},
+		{
+			"key": "seller_api",
+			"value": "http://3.238.237.182:8080",
+			"type": "string"
+		}
+	]
+}
